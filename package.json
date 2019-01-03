@@ -21,6 +21,8 @@
     "utf8": "^3.0.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "NODE_PATH=src react-scripts start",
     "build": "NODE_PATH=src react-scripts build"
   },
