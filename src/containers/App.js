@@ -45,6 +45,7 @@ class App extends Component {
     const params = queryString.parse(this.props.location.search);
     const updated = { ...this.state.controls, ...params };
     const allowed = Object.keys(this.state.controls);
+
     const filtered = Object.keys(updated)
       .filter(key => allowed.includes(key))
       .reduce((obj, key) => {
@@ -59,7 +60,9 @@ class App extends Component {
         return obj;
       }, {});
 
-    this.setState(filtered);
+    this.setState({
+      controls: filtered
+    });
   };
 
   handleChange = (name, value) => {
