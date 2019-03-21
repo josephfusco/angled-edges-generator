@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import history from '../history';
-import queryString from 'query-string';
-import AngledEdge, { HypotenuseOptions } from 'components/AngledEdge';
-import ColorPicker from 'components/ColorPicker';
-import styled from 'styled-components';
+import React, { Component } from "react";
+import history from "../history";
+import queryString from "query-string";
+import AngledEdge, { HypotenuseOptions } from "components/AngledEdge";
+import ColorPicker from "components/ColorPicker";
+import styled from "styled-components";
 
 import {
   Button,
@@ -17,7 +17,7 @@ import {
   Row,
   Slider,
   Radio
-} from 'antd';
+} from "antd";
 
 class App extends Component {
   constructor(props) {
@@ -27,12 +27,12 @@ class App extends Component {
       controls: {
         angle     : 10,
         fluid     : false,
-        hypotenuse: 'lower-left',
+        hypotenuse: "lower-left",
         height    : 200,
         width     : 800,
-        fillTop   : 'rgba(234,50,23,1.0)',
-        fillShape : 'rgba(234,50,23,1.0)',
-        fillBottom: 'rgba(239,239,239,1.0)'
+        fillTop   : "rgba(234,50,23,1.0)",
+        fillShape : "rgba(234,50,23,1.0)",
+        fillBottom: "rgba(239,239,239,1.0)"
       }
     };
   }
@@ -50,9 +50,9 @@ class App extends Component {
       .filter(key => allowed.includes(key))
       .reduce((obj, key) => {
         const type = typeof this.state.controls[key];
-        if ('boolean' === type) {
-          obj[key] = 'true' === updated[key];
-        } else if ('number' === type) {
+        if ("boolean" === type) {
+          obj[key] = "true" === updated[key];
+        } else if ("number" === type) {
           obj[key] = parseInt(updated[key]);
         } else {
           obj[key] = updated[key];
@@ -94,7 +94,7 @@ class App extends Component {
   render() {
     const { controls } = this.state;
     const hypotenuseMenu = (
-      <Menu onClick={e => this.handleChangeAndUpdate('hypotenuse', e.key)}>
+      <Menu onClick={e => this.handleChangeAndUpdate("hypotenuse", e.key)}>
         {HypotenuseOptions.map(option => (
           <Menu.Item key={option.value}>{option.value}</Menu.Item>
         ))}
@@ -127,24 +127,24 @@ class App extends Component {
                     <ColorPicker
                       fill={controls.fillTop}
                       label="top section color:"
-                      onChange={e => this.handleChange('fillTop', e)}
+                      onChange={e => this.handleChange("fillTop", e)}
                       onChangeComplete={e =>
-                        this.handleChangeAndUpdate('fillTop', e)
+                        this.handleChangeAndUpdate("fillTop", e)
                       }
                     />
                     <ColorPicker
                       fill={controls.fillBottom}
                       label="bottom section color:"
-                      onChange={e => this.handleChange('fillBottom', e)}
+                      onChange={e => this.handleChange("fillBottom", e)}
                       onChangeComplete={e =>
-                        this.handleChangeAndUpdate('fillBottom', e)
+                        this.handleChangeAndUpdate("fillBottom", e)
                       }
                     />
                     <Radio.Group
                       defaultValue="a"
                       buttonStyle="solid"
                       onChange={e =>
-                        this.handleChangeAndUpdate('fillShape', e.target.value)
+                        this.handleChangeAndUpdate("fillShape", e.target.value)
                       }
                     >
                       shape color:
@@ -172,7 +172,7 @@ class App extends Component {
                       <Checkbox
                         checked={controls.fluid}
                         onChange={e =>
-                          this.handleChangeAndUpdate('fluid', e.target.checked)
+                          this.handleChangeAndUpdate("fluid", e.target.checked)
                         }
                         style={{ marginLeft: 8 }}
                       />
@@ -181,14 +181,14 @@ class App extends Component {
                       <Dropdown
                         onChange={e =>
                           this.handleChangeAndUpdate(
-                            'hypotenuse',
+                            "hypotenuse",
                             e.target.value
                           )
                         }
                         overlay={hypotenuseMenu}
-                        trigger={['click']}
+                        trigger={["click"]}
                       >
-                        <div style={{ minWidth: '20rem' }}>
+                        <div style={{ minWidth: "20rem" }}>
                           hypotenuse:
                           <Button style={{ marginLeft: 8 }}>
                             {controls.hypotenuse}
@@ -210,9 +210,9 @@ class App extends Component {
                             max={45}
                             min={1}
                             onAfterChange={e =>
-                              this.handleChangeAndUpdate('angle', e)
+                              this.handleChangeAndUpdate("angle", e)
                             }
-                            onChange={e => this.handleChange('angle', e)}
+                            onChange={e => this.handleChange("angle", e)}
                             style={{ marginLeft: 16 }}
                             value={controls.angle}
                           />
@@ -223,11 +223,11 @@ class App extends Component {
                             max={45}
                             min={1}
                             onChange={e =>
-                              this.handleChangeAndUpdate('angle', e)
+                              this.handleChangeAndUpdate("angle", e)
                             }
                             style={{
                               marginLeft: 8,
-                              width     : '100%',
+                              width     : "100%",
                               minWidth  : 70
                             }}
                             value={controls.angle}
@@ -241,12 +241,12 @@ class App extends Component {
                         <Col span={12}>
                           <Slider
                             disabled={controls.fluid}
-                            max={2500}
+                            max={5760}
                             min={0}
                             onAfterChange={e =>
-                              this.handleChangeAndUpdate('width', e)
+                              this.handleChangeAndUpdate("width", e)
                             }
-                            onChange={e => this.handleChange('width', e)}
+                            onChange={e => this.handleChange("width", e)}
                             step={10}
                             style={{ marginLeft: 16 }}
                             value={controls.width}
@@ -255,14 +255,14 @@ class App extends Component {
                         <Col span={4}>
                           <InputNumber
                             disabled={controls.fluid}
-                            max={2500}
+                            max={5760}
                             min={0}
                             onChange={e =>
-                              this.handleChangeAndUpdate('width', e)
+                              this.handleChangeAndUpdate("width", e)
                             }
                             style={{
                               marginLeft: 8,
-                              width     : '100%',
+                              width     : "100%",
                               minWidth  : 70
                             }}
                             value={controls.width}
@@ -279,9 +279,9 @@ class App extends Component {
                             max={500}
                             min={0}
                             onAfterChange={e =>
-                              this.handleChangeAndUpdate('height', e)
+                              this.handleChangeAndUpdate("height", e)
                             }
-                            onChange={e => this.handleChange('height', e)}
+                            onChange={e => this.handleChange("height", e)}
                             step={10}
                             style={{ marginLeft: 16 }}
                             value={controls.height}
@@ -293,11 +293,11 @@ class App extends Component {
                             max={500}
                             min={0}
                             onChange={e =>
-                              this.handleChangeAndUpdate('height', e)
+                              this.handleChangeAndUpdate("height", e)
                             }
                             style={{
                               marginLeft: 8,
-                              width     : '100%',
+                              width     : "100%",
                               minWidth  : 70
                             }}
                             value={controls.height}
